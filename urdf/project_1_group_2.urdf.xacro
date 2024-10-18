@@ -4,7 +4,39 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="project_1_group_2" xmlns:xacro="http://ros.org/wiki/xacro">
-  
+  <ros2_control name="GazeboSystem" type="system">
+ <hardware>
+     <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+ </hardware>
+ # Velocity Controllers
+
+ <joint name="back_right_wheel_joint">
+     <command_interface name="velocity">
+         <param name="min">-1000.0</param>
+         <param name="max">1000.0</param>
+     </command_interface>
+     <state_interface name="position"/>
+     <state_interface name="velocity"/>
+ </joint>
+
+# Position Controller
+ <joint name="front_left_axel_joint">
+     <command_interface name="position">
+         <param name="min">-3.14</param>
+         <param name="max">3.14</param>
+     </command_interface>
+     <state_interface name="position"/>
+     <state_interface name="velocity"/>
+ </joint>
+
+ </ros2_control>
+
+ <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <parameters>$(find project_1_group_2)/config/control.yaml</parameters>
+    </plugin>
+</gazebo>
+
   <xacro:macro name="red_color">
       <visual>
       <material>
@@ -123,7 +155,7 @@
   </link>
   <joint
     name="steering_joint_1"
-    type="continuous">
+    type="revolute">
     <origin
       xyz="0.0709516994137151 -0.734196139704711 0.0381336482199598"
       rpy="1.5707963267949 0 -1.64845028267497" />
@@ -133,6 +165,11 @@
       link="steering_wheel_1" />
     <axis
       xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.5707963267949"  
+      effort="1000"
+      velocity="10" />
   </joint>
   <link
     name="wheel_1">
@@ -282,7 +319,7 @@
   </link>
   <joint
     name="steering_joint_2"
-    type="continuous">
+    type="revolute">
     <origin
       xyz="0.368131699413715 -0.734196139704711 0.0381336482199601"
       rpy="1.5707963267949 0 1.46985194767708" />
@@ -292,6 +329,12 @@
       link="steering_wheel_2" />
     <axis
       xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.5707963267949"  
+      effort="1000"
+      velocity="10" />
+      
   </joint>
   <link
     name="wheel_2">

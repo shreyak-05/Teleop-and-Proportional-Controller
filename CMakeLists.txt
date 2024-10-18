@@ -11,6 +11,7 @@ find_package(robot_state_publisher REQUIRED)
 find_package(xacro REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(ros2_control REQUIRED)
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -21,17 +22,20 @@ urdf
 meshes
 launch
 worlds
+config
+scripts
 DESTINATION share/${PROJECT_NAME}/
 )
 
-install(
-    DIRECTORY include/project_1_group_2
-    DESTINATION include
-    )
+# install(
+#     DIRECTORY include/project_1_group_2
+#     DESTINATION include
+#     )
 
 install(
   PROGRAMS
   launch/robot_description_publisher.py
+  scripts/teleop.py
   DESTINATION lib/${PROJECT_NAME}
   )
 
