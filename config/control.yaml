@@ -18,8 +18,8 @@ controller_manager:
 position_controller:
     ros__parameters:
         joints:
-            - drive_wheel_1_joint
-            - drive_wheel_2_joint
+            - steering_joint_1
+            - steering_joint_2
         interface_name: position
         command_interfaces:
             - position
