@@ -164,12 +164,10 @@
     <child
       link="steering_wheel_1" />
     <axis
-      xyz="0 1 0" />
-    <limit
-      lower="0"
-      upper="1.5707963267949"  
-      effort="1000"
-      velocity="10" />
+      xyz="1 0 0" />
+
+    <limit lower="0" upper="1.57" effort="100.0" velocity="1.0" />
+
   </joint>
   <link
     name="wheel_1">
@@ -327,14 +325,8 @@
       link="base_link" />
     <child
       link="steering_wheel_2" />
-    <axis
-      xyz="0 1 0" />
-    <limit
-      lower="0"
-      upper="1.5707963267949"  
-      effort="1000"
-      velocity="10" />
-      
+    <axis xyz="1 0 0" />
+    <limit lower="0" upper="1.57" effort="100.0" velocity="1.0" />
   </joint>
   <link
     name="wheel_2">
@@ -494,6 +486,10 @@
       link="drive_wheel_1" />
     <axis
       xyz="0 1 0" />
+    <limit
+      effort="100"
+      velocity="1000"
+      />
   </joint>
   <link
     name="drive_tire_1">
@@ -600,6 +596,10 @@
       link="drive_wheel_2" />
     <axis
       xyz="0 1 0" />
+    <limit
+      effort="100"
+      velocity="1000"
+      />
   </joint>
   <link
     name="drive_tire_2">
@@ -866,6 +866,102 @@
     <axis
       xyz="0 0 0" />
   </joint>
+  <link name="lidar_link">
+    <inertial>
+      <origin 
+        xyz="0 0.00126999999999999 0" rpy="0 0 0"/>
+      <mass 
+        value="0.00514814798763055"/>
+      <inertia 
+        ixx="8.33112604888014E-07" ixy="-3.20922964057601E-40" ixz="0" iyy="1.66068957784986E-06" iyz="2.8186396765545E-40" izz="8.33112604888014E-07"/>
+    </inertial>
+    <visual>
+      <origin 
+        xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh 
+          filename="package://project_1_group_2/meshes/lidar_link.STL"/>
+      </geometry>
+      <material name="">
+        <color 
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin 
+        xyz="0 0 0" 
+        rpy="0 0 0"/>
+      <geometry>
+        <mesh 
+          filename="package://project_1_group_2/meshes/lidar_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint 
+    name="lidar_joint" 
+    type="continuous">
+    <origin 
+      xyz="0.219541699413715 -0.521188368096002 0.439623181973066" 
+      rpy="1.5707963267949 0 0"/>
+    <parent 
+      link="base_link"/>
+    <child 
+      link="lidar_link"/>
+    <axis 
+      xyz="0 1 0"/>
+  </joint>
+
+
+  <ros2_control name="GazeboSystem" type="system">
+  <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+
+  <joint name="drive_wheel_1_joint">
+      <command_interface name="velocity">
+          <param name="min">-100.0</param>
+          <param name="max">100.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="drive_wheel_2_joint">
+      <command_interface name="velocity">
+          <param name="min">-100.0</param>
+          <param name="max">100.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="steering_joint_1">
+        <command_interface name="position">
+            <param name="min">-3.14</param>
+            <param name="max">3.14</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="steering_joint_2">
+        <command_interface name="position">
+            <param name="min">-3.14</param>
+            <param name="max">3.14</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+    </joint>
+  
+  </ros2_control>
+
+
+
+  <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+          <parameters>$(find project_1_group_2)/config/control.yaml</parameters>
+      </plugin>
+  </gazebo>
 
   <gazebo reference="base_link">
     <xacro:red_color />
@@ -925,6 +1021,46 @@
 
   <gazebo reference="trailer_wheel_2">
     <xacro:black_color />
+  </gazebo>
+
+  <gazebo reference="lidar_link">
+    <xacro:black_color />
+  </gazebo>
+
+  <gazebo reference="lidar_link">
+  <sensor name="lidar" type="ray">
+    <pose>0.0 0.0 0.0 1.57 0 0</pose>
+    <always_on>true</always_on>
+    <visualize>true</visualize>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1.00000</resolution>
+          <min_angle>0.000000</min_angle>
+          <max_angle>6.280000</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120000</min>
+        <max>3.5</max>
+        <resolution>0.015000</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>lidar_link</frame_name>
+    </plugin>
+  </sensor>
   </gazebo>
 
 </robot>

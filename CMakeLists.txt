@@ -13,6 +13,7 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(ros2_control REQUIRED)
 
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -23,7 +24,6 @@ meshes
 launch
 worlds
 config
-scripts
 DESTINATION share/${PROJECT_NAME}/
 )
 
