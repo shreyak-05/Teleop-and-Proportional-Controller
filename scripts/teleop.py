@@ -12,7 +12,7 @@ import termios
 #from pynput import keyboard
 
 # Define key codes
-LIN_VEL_STEP_SIZE = 10
+LIN_VEL_STEP_SIZE = 5
 ANG_VEL_STEP_SIZE = 0.1
 
 class KeyboardControlNode(Node):
@@ -75,10 +75,10 @@ class KeyboardControlNode(Node):
                     steer_angle += ANG_VEL_STEP_SIZE
 
 
-                if steer_angle>1.0:
-                        steer_angle=1.0
-                if steer_angle<-1.0:
-                    steer_angle=-1.0
+                if steer_angle>0.7:
+                        steer_angle=0.7
+                if steer_angle<-0.7:
+                    steer_angle=-0.7
 
                 print("Steer Angle",steer_angle)
                 print("Linear Velocity",linear_vel)
