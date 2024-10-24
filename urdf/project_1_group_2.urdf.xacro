@@ -4,38 +4,9 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="project_1_group_2" xmlns:xacro="http://ros.org/wiki/xacro">
-  <ros2_control name="GazeboSystem" type="system">
- <hardware>
-     <plugin>gazebo_ros2_control/GazeboSystem</plugin>
- </hardware>
- # Velocity Controllers
 
- <joint name="back_right_wheel_joint">
-     <command_interface name="velocity">
-         <param name="min">-1000.0</param>
-         <param name="max">1000.0</param>
-     </command_interface>
-     <state_interface name="position"/>
-     <state_interface name="velocity"/>
- </joint>
 
-# Position Controller
- <joint name="front_left_axel_joint">
-     <command_interface name="position">
-         <param name="min">-3.14</param>
-         <param name="max">3.14</param>
-     </command_interface>
-     <state_interface name="position"/>
-     <state_interface name="velocity"/>
- </joint>
 
- </ros2_control>
-
- <gazebo>
-    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-        <parameters>$(find project_1_group_2)/config/control.yaml</parameters>
-    </plugin>
-</gazebo>
 
   <xacro:macro name="red_color">
       <visual>
@@ -83,11 +54,11 @@
         value="45.0255547584039" />
       <inertia
         ixx="3.47370213259269"
-        ixy="8.68638754770634E-06"
-        ixz="1.28817771727052E-06"
+        ixy="8.68638754776676E-06"
+        ixz="1.2881777172653E-06"
         iyy="1.51493007257673"
-        iyz="0.0559660105211115"
-        izz="4.32787408102168" />
+        iyz="0.0559660105211113"
+        izz="4.32787408102169" />
     </inertial>
     <visual>
       <origin
@@ -117,17 +88,17 @@
     name="steering_wheel_1">
     <inertial>
       <origin
-        xyz="2.86075080291326E-08 0.0749063419355981 0.00254051949689649"
+        xyz="2.8607507807088E-08 0.0723663419355983 0.0025405194968964"
         rpy="0 0 0" />
       <mass
-        value="0.295424107267104" />
+        value="0.295424107267105" />
       <inertia
         ixx="0.000710809060839364"
-        ixy="1.53957020749097E-10"
-        ixz="3.53322320504462E-10"
+        ixy="1.53957020724956E-10"
+        ixz="3.53322320619659E-10"
         iyy="0.000104054571155282"
-        iyz="3.85934455800396E-05"
-        izz="0.000690101015602261" />
+        iyz="3.85934455800398E-05"
+        izz="0.00069010101560226" />
     </inertial>
     <visual>
       <origin
@@ -157,33 +128,35 @@
     name="steering_joint_1"
     type="revolute">
     <origin
-      xyz="0.0709516994137151 -0.734196139704711 0.0381336482199598"
-      rpy="1.5707963267949 0 -1.64845028267497" />
+      xyz="0.070952 -0.7342 0.038134"
+      rpy="1.5708 0 -1.6485" />
     <parent
       link="base_link" />
     <child
       link="steering_wheel_1" />
     <axis
-      xyz="1 0 0" />
-
-    <limit lower="0" upper="1.57" effort="100.0" velocity="1.0" />
-
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="wheel_1">
     <inertial>
       <origin
-        xyz="-1.11022302462516E-16 0.0328469418204771 -1.11022302462516E-16"
+        xyz="-0.00233208035893656 0.0353869418204771 0.00100647960707934"
         rpy="0 0 0" />
       <mass
         value="0.217134053712094" />
       <inertia
         ixx="0.000126052696684197"
         ixy="-6.05628557286825E-20"
-        ixz="-1.01643953670516E-20"
+        ixz="-3.3881317890172E-21"
         iyy="0.000159854355976214"
-        iyz="-1.22819777351874E-19"
-        izz="0.000126052696684198" />
+        iyz="-1.27901975035399E-19"
+        izz="0.000126052696684197" />
     </inertial>
     <visual>
       <origin
@@ -213,8 +186,8 @@
     name="wheel_1_joint"
     type="continuous">
     <origin
-      xyz="0 0.0234950000000013 0.0304806572118972"
-      rpy="1.5707963267949 0 1.16336545532605" />
+      xyz="0 0.023495 0.030481"
+      rpy="1.5708 0 1.1634" />
     <parent
       link="steering_wheel_1" />
     <child
@@ -226,16 +199,16 @@
     name="tire_1">
     <inertial>
       <origin
-        xyz="-2.77555756156289E-16 0.033142685248773 -6.93671252038897E-06"
+        xyz="-0.00233208035893662 0.0356826852487729 0.00099954289455717"
         rpy="0 0 0" />
       <mass
         value="1.9636352752673" />
       <inertia
         ixx="0.00664149361787531"
-        ixy="-5.32614317233504E-18"
-        ixz="0"
+        ixy="-5.28548559086683E-18"
+        ixz="-4.33680868994202E-19"
         iyy="0.0114725337233255"
-        iyz="5.01717636383831E-07"
+        iyz="5.01717636383912E-07"
         izz="0.00664244711710664" />
     </inertial>
     <visual>
@@ -279,14 +252,14 @@
     name="steering_wheel_2">
     <inertial>
       <origin
-        xyz="2.86075079181103E-08 0.0749063419355979 0.0025405194968966"
+        xyz="2.86075080291326E-08 0.0723663419355979 0.0025405194968961"
         rpy="0 0 0" />
       <mass
         value="0.295424107267104" />
       <inertia
         ixx="0.000710809060839366"
-        ixy="1.53957022007787E-10"
-        ixz="3.53322320524791E-10"
+        ixy="1.53957022022187E-10"
+        ixz="3.53322320463805E-10"
         iyy="0.000104054571155282"
         iyz="3.85934455800392E-05"
         izz="0.000690101015602263" />
@@ -319,30 +292,35 @@
     name="steering_joint_2"
     type="revolute">
     <origin
-      xyz="0.368131699413715 -0.734196139704711 0.0381336482199601"
-      rpy="1.5707963267949 0 1.46985194767708" />
+      xyz="0.36813 -0.7342 0.038134"
+      rpy="1.5708 0 1.4699" />
     <parent
       link="base_link" />
     <child
       link="steering_wheel_2" />
-    <axis xyz="1 0 0" />
-    <limit lower="0" upper="1.57" effort="100.0" velocity="1.0" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="100" />
   </joint>
   <link
     name="wheel_2">
     <inertial>
       <origin
-        xyz="-1.11022302462516E-16 0.0327404142384009 4.85722573273506E-17"
+        xyz="-3.33066907387547E-16 0.0352804142384009 0.00254000000000009"
         rpy="0 0 0" />
       <mass
         value="0.217134053712094" />
       <inertia
-        ixx="0.000126052696684197"
-        ixy="-1.40607469244214E-19"
-        ixz="4.58162463473438E-22"
+        ixx="0.000126052696684198"
+        ixy="-1.42301535138722E-19"
+        ixz="3.17002825963484E-22"
         iyy="0.000159854355976214"
-        iyz="4.6915870035985E-20"
-        izz="0.000126052696684197" />
+        iyz="4.53198898728574E-20"
+        izz="0.000126052696684198" />
     </inertial>
     <visual>
       <origin
@@ -385,16 +363,16 @@
     name="tire_2">
     <inertial>
       <origin
-        xyz="-5.55111512312578E-16 0.0330361576666969 -6.93671252204042E-06"
+        xyz="-1.11022302462516E-16 0.0355761576666964 0.002533063287478"
         rpy="0 0 0" />
       <mass
         value="1.9636352752673" />
       <inertia
-        ixx="0.00664149361787532"
-        ixy="-2.23887748618257E-17"
-        ixz="-2.02295290606123E-20"
+        ixx="0.00664149361787531"
+        ixy="-2.24429849704499E-17"
+        ixz="-1.96935160236779E-20"
         iyy="0.0114725337233255"
-        iyz="5.01717636407576E-07"
+        iyz="5.01717636407577E-07"
         izz="0.00664244711710664" />
     </inertial>
     <visual>
@@ -438,16 +416,16 @@
     name="drive_wheel_1">
     <inertial>
       <origin
-        xyz="0 -0.00394110038134092 0"
+        xyz="-3.46944695195361E-17 -0.00140110038134092 2.77555756156289E-17"
         rpy="0 0 0" />
       <mass
         value="0.217134053712094" />
       <inertia
         ixx="0.000126052696684197"
-        ixy="3.3729039727271E-21"
-        ixz="3.3881317890172E-21"
+        ixy="3.65602981705437E-21"
+        ixz="-1.01643953670516E-20"
         iyy="0.000159854355976214"
-        iyz="3.61812388485371E-23"
+        iyz="-7.36513260038282E-22"
         izz="0.000126052696684197" />
     </inertial>
     <visual>
@@ -478,15 +456,15 @@
     name="drive_wheel_1_joint"
     type="continuous">
     <origin
-      xyz="0 -0.226196139704711 0.0616752507094044"
-      rpy="0 -1.05614651222822 1.5707963267949" />
+      xyz="0 -0.2262 0.061675"
+      rpy="0 -1.0561 1.5708" />
     <parent
       link="base_link" />
     <child
       link="drive_wheel_1" />
     <axis
       xyz="0 1 0" />
-    <limit
+      <limit
       effort="100"
       velocity="1000"
       />
@@ -495,16 +473,16 @@
     name="drive_tire_1">
     <inertial>
       <origin
-        xyz="4.85722573273506E-17 0.0463546430469551 -6.93671252210981E-06"
+        xyz="2.08166817117217E-17 0.048894643046955 -6.93671252216532E-06"
         rpy="0 0 0" />
       <mass
         value="1.9636352752673" />
       <inertia
         ixx="0.00664149361787532"
-        ixy="5.97502334949104E-19"
+        ixy="6.09863722023096E-19"
         ixz="6.50521303491303E-19"
         iyy="0.0114725337233256"
-        iyz="5.01717636401396E-07"
+        iyz="5.01717636401377E-07"
         izz="0.00664244711710664" />
     </inertial>
     <visual>
@@ -548,16 +526,16 @@
     name="drive_wheel_2">
     <inertial>
       <origin
-        xyz="0 0.0251005990323743 0"
+        xyz="-2.77555756156289E-17 0.0276405990323743 0"
         rpy="0 0 0" />
       <mass
         value="0.217134053712094" />
       <inertia
         ixx="0.000126052696684198"
-        ixy="-3.63749633218865E-22"
+        ixy="-3.68451216035455E-22"
         ixz="3.3881317890172E-21"
         iyy="0.000159854355976214"
-        iyz="4.59571290113259E-21"
+        iyz="4.59516996223815E-21"
         izz="0.000126052696684198" />
     </inertial>
     <visual>
@@ -588,15 +566,15 @@
     name="drive_wheel_2_joint"
     type="continuous">
     <origin
-      xyz="0.410041699413715 -0.226196139704711 0.0616752507094044"
-      rpy="0 0.133652884209387 -1.5707963267949" />
+      xyz="0.41004 -0.2262 0.061675"
+      rpy="0 0.13365 -1.5708" />
     <parent
       link="base_link" />
     <child
       link="drive_wheel_2" />
     <axis
       xyz="0 1 0" />
-    <limit
+      <limit
       effort="100"
       velocity="1000"
       />
@@ -605,14 +583,14 @@
     name="drive_tire_2">
     <inertial>
       <origin
-        xyz="5.55111512312578E-17 0.0380963424606702 -6.93671252208206E-06"
+        xyz="1.11022302462516E-16 0.0406363424606702 -6.93671252208206E-06"
         rpy="0 0 0" />
       <mass
         value="1.9636352752673" />
       <inertia
         ixx="0.00664149361787531"
-        ixy="-2.07086320713876E-19"
-        ixz="-2.71050543121376E-19"
+        ixy="-2.07046616044473E-19"
+        ixz="-1.62630325872826E-19"
         iyy="0.0114725337233255"
         iyz="5.01717636401017E-07"
         izz="0.00664244711710664" />
@@ -658,14 +636,14 @@
     name="trailer">
     <inertial>
       <origin
-        xyz="1.03723919120391E-07 0.039678899062889 0.429404896824894"
+        xyz="1.03723919092635E-07 0.039678899062889 0.429404896824893"
         rpy="0 0 0" />
       <mass
         value="5.43041573976378" />
       <inertia
         ixx="0.10730066092027"
-        ixy="3.55141031653269E-09"
-        ixz="1.34013193774558E-07"
+        ixy="3.55141031738537E-09"
+        ixz="1.34013193767086E-07"
         iyy="0.205190385513249"
         iyz="-0.00161014497039631"
         izz="0.111162712366413" />
@@ -698,8 +676,8 @@
     name="trailer_joint"
     type="continuous">
     <origin
-      xyz="0.219541699413715 0.0756928741214014 0.118220074500864"
-      rpy="1.5707963267949 0 3.14159265358979" />
+      xyz="0.21954 0.075693 0.11822"
+      rpy="1.5708 0 3.1416" />
     <parent
       link="base_link" />
     <child
@@ -711,17 +689,17 @@
     name="trailer_axle">
     <inertial>
       <origin
-        xyz="0 1.11022302462516E-16 0"
+        xyz="-2.77555756156289E-17 1.11022302462516E-16 -1.11022302462516E-16"
         rpy="0 0 0" />
       <mass
-        value="0.505508059036363" />
+        value="0.388537069771013" />
       <inertia
-        ixx="0.00905526872280177"
-        ixy="-1.21084579376871E-18"
+        ixx="0.00709487470732703"
+        ixy="-3.22345840493327E-19"
         ixz="0"
-        iyy="9.38617439436599E-05"
-        iyz="-4.50500700801976E-19"
-        izz="0.00905526872280177" />
+        iyy="5.66992976163243E-05"
+        iyz="-1.06353893196349E-19"
+        izz="0.00709487470732703" />
     </inertial>
     <visual>
       <origin
@@ -764,17 +742,17 @@
     name="trailer_wheel_1">
     <inertial>
       <origin
-        xyz="0 0 0.01905"
+        xyz="-1.11022302462516E-16 2.22044604925031E-16 0.0190500000000002"
         rpy="0 0 0" />
       <mass
-        value="0.878446664829222" />
+        value="1.30378374657888" />
       <inertia
-        ixx="0.00184834599849114"
-        ixy="-1.0842021724855E-19"
-        ixz="3.82736300415033E-20"
-        iyy="0.00184834599849114"
-        iyz="1.56647416927702E-19"
-        izz="0.00348762436406984" />
+        ixx="0.00396064889398226"
+        ixy="3.25260651745651E-19"
+        ixz="1.83643208229129E-19"
+        iyy="0.00396064889398226"
+        iyz="3.13874282267138E-19"
+        izz="0.00761008083736416" />
     </inertial>
     <visual>
       <origin
@@ -817,17 +795,17 @@
     name="trailer_wheel_2">
     <inertial>
       <origin
-        xyz="0 0 0.01905"
+        xyz="1.38777878078145E-16 2.22044604925031E-16 0.0190500000000002"
         rpy="0 0 0" />
       <mass
-        value="0.878446664829222" />
+        value="1.30378374657888" />
       <inertia
-        ixx="0.00184834599849114"
-        ixy="1.0842021724855E-19"
-        ixz="2.10174356786361E-19"
-        iyy="0.00184834599849114"
-        iyz="-1.77579121450258E-19"
-        izz="0.00348762436406984" />
+        ixx="0.00396064889398226"
+        ixy="-5.42101086242752E-19"
+        ixz="2.3648274839026E-19"
+        iyy="0.00396064889398226"
+        iyz="-4.01472956762225E-19"
+        izz="0.00761008083736416" />
     </inertial>
     <visual>
       <origin
@@ -866,50 +844,60 @@
     <axis
       xyz="0 0 0" />
   </joint>
-  <link name="lidar_link">
+  <link
+    name="lidar_link">
     <inertial>
-      <origin 
-        xyz="0 0.00126999999999999 0" rpy="0 0 0"/>
-      <mass 
-        value="0.00514814798763055"/>
-      <inertia 
-        ixx="8.33112604888014E-07" ixy="-3.20922964057601E-40" ixz="0" iyy="1.66068957784986E-06" iyz="2.8186396765545E-40" izz="8.33112604888014E-07"/>
+      <origin
+        xyz="0 0.00126999999999999 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00514814798763055" />
+      <inertia
+        ixx="8.33112604888014E-07"
+        ixy="-3.20922964057601E-40"
+        ixz="0"
+        iyy="1.66068957784986E-06"
+        iyz="2.8186396765545E-40"
+        izz="8.33112604888014E-07" />
     </inertial>
     <visual>
-      <origin 
-        xyz="0 0 0" rpy="0 0 0"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
-        <mesh 
-          filename="package://project_1_group_2/meshes/lidar_link.STL"/>
+        <mesh
+          filename="package://project_1_group_2/meshes/lidar_link.STL" />
       </geometry>
-      <material name="">
-        <color 
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
-      <origin 
-        xyz="0 0 0" 
-        rpy="0 0 0"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
-        <mesh 
-          filename="package://project_1_group_2/meshes/lidar_link.STL"/>
+        <mesh
+          filename="package://project_1_group_2/meshes/lidar_link.STL" />
       </geometry>
     </collision>
   </link>
-  <joint 
-    name="lidar_joint" 
+  <joint
+    name="lidar_joint"
     type="continuous">
-    <origin 
-      xyz="0.219541699413715 -0.521188368096002 0.439623181973066" 
-      rpy="1.5707963267949 0 0"/>
-    <parent 
-      link="base_link"/>
-    <child 
-      link="lidar_link"/>
-    <axis 
-      xyz="0 1 0"/>
+    <origin
+      xyz="0.219541699413715 -0.521188368096002 0.439623181973066"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 1 0" />
   </joint>
+
 
 
   <ros2_control name="GazeboSystem" type="system">
