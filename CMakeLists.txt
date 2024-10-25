@@ -23,6 +23,7 @@ urdf
 meshes
 launch
 worlds
+competition
 config
 DESTINATION share/${PROJECT_NAME}/
 )
