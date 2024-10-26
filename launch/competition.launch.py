@@ -16,7 +16,7 @@ def generate_launch_description():
 
     # Get the location for empty world
     world = os.path.join(
-        get_package_share_directory('package_name'),
+        get_package_share_directory('project_1_group_2'),
         'competition','worlds',
         'competition.world'
     )
@@ -37,7 +37,7 @@ def generate_launch_description():
     )
 
     # Get the package directory 
-    pkg_gazebo = get_package_share_directory('package_name')
+    pkg_gazebo = get_package_share_directory('project_1_group_2')
 
    
 
