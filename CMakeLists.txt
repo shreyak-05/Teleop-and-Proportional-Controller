@@ -22,6 +22,7 @@ install(DIRECTORY
 urdf
 meshes
 launch
+scripts
 worlds
 competition
 config
@@ -37,6 +38,7 @@ install(
   PROGRAMS
   launch/robot_description_publisher.py
   scripts/teleop.py
+  scripts/proportional_controller.py
   DESTINATION lib/${PROJECT_NAME}
   )
 
