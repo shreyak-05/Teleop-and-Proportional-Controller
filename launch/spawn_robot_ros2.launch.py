@@ -86,11 +86,12 @@ def generate_launch_description():
 
     # Joint State Publisher Node
 
-    joint_state_publisher_node = launch_ros.actions.Node(
+    joint_state_publisher_node = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
-        condition=launch.conditions.UnlessCondition(LaunchConfiguration('gui'))
+        output='screen',
+        parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}]
     )
 
 
@@ -144,8 +145,7 @@ def generate_launch_description():
     # create and return launch description object
     return LaunchDescription(
         [   
-            launch.actions.DeclareLaunchArgument(name='gui', default_value='True',
-                                            description='Flag to enable joint_state_publisher_gui'),
+
             launch.actions.DeclareLaunchArgument(name='use_sim_time', default_value='True',
                                             description='Flag to enable use_sim_time'),
             publish_robot_description,

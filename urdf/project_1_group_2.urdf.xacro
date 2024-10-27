@@ -1066,7 +1066,7 @@
     <!-- Name of the link for which the odometry is required -->
     <frame>dummy_link</frame>
     <!-- Any arbitray name for the world frame -->
-    <world_frame>fixed_world</world_frame>
+    <world_frame>map</world_frame>
   </plugin>
   </gazebo>
 
