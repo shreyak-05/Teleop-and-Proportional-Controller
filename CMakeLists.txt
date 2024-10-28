@@ -39,6 +39,7 @@ install(
   launch/robot_description_publisher.py
   scripts/teleop.py
   scripts/proportional_controller.py
+  scripts/position_logger.py
   DESTINATION lib/${PROJECT_NAME}
   )
 
