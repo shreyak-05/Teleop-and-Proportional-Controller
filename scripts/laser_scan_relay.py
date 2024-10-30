@@ -5,6 +5,12 @@ from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
+# This node was created as a workaround to resolve issues with visualizing Rviz LIDAR data.
+# The node subscribes to the /scan topic and relays the same information. The only difference is
+# this node has different QOS settings that align with the Rviz QOS settings. This allows, Rviz to
+# read and display the LIDAR data.
+
+
 class ScanRelay(Node):
     def __init__(self):
         super().__init__('scan_relay')

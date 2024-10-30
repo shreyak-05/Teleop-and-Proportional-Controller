@@ -38,8 +38,7 @@ install(
   PROGRAMS
   launch/robot_description_publisher.py
   scripts/teleop.py
-  scripts/proportional_controller.py
-  scripts/position_logger.py
+  scripts/straight_line_controller.py
   scripts/p_controller.py
   scripts/laser_scan_relay.py
   DESTINATION lib/${PROJECT_NAME}

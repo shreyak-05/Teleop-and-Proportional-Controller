@@ -6,6 +6,13 @@ from std_msgs.msg import Float64MultiArray
 from geometry_msgs.msg import PoseStamped
 from math import sqrt
 
+
+# This node was oringally modified from the Turtlebot3 position controller node. 
+# We used this as a starting point to understand proportional controllers, and it serves as the
+# foundation for our actual proportional controller. The difference between this controller and the final
+# controller, is that this proportional controller makes the robot travel only in a straight line.
+
+
 class StraightLineController(Node):
     def __init__(self):
         super().__init__('straight_line_controller')

@@ -23,7 +23,7 @@ def generate_launch_description():
 
     # Position and orientation
     # [X, Y, Z]
-    position = [1.5, 0.0, 0.5]      # Uncomment this line when using competition world
+    position = [1.0, 0.0, 0.5]      # Uncomment this line when using competition world
     #position = [-0.2, 0.0, 0.2]    # Uncomment this line when using proportional controller in empty world
     # [Roll, Pitch, Yaw]
     orientation = [0.0, 0.0, 0.0]   # Uncomment this line when using competition world
