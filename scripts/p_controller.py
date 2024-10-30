@@ -4,7 +4,9 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
 from geometry_msgs.msg import PoseStamped
-from math import sqrt, sin, cos, atan2, tan, radians
+from math import sqrt, atan2
+import numpy as np
+import sys
 
 class StraightLineController(Node):
     def __init__(self):
@@ -28,8 +30,9 @@ class StraightLineController(Node):
         self.reached_goal = False
 
         self.get_logger().info('Straight line controller initialized. Moving towards x = 10.0 y = 10.0.')
-
-        
+        self.x_position = np.array([])
+        self.y_position = np.array([])
+        self.counter_ = 0.0
 
 
     def odom_callback(self, msg):
@@ -82,6 +85,12 @@ class StraightLineController(Node):
         
         self.get_logger().info(f"Publishing: linear_vel = {linear_vel}")
         self.get_logger().info(f"Publishing: linear_vel = {wheel_angle}")
+
+        self.x_position = np.append(self.x_position, current_x)
+        self.y_position = np.append(self.y_position, current_y)
+
+        np.save('x_position', self.x_position)
+        np.save('y_position', self.y_position)
 
     def stop_robot(self):
         """Stop the robot by publishing zero velocity."""
