@@ -23,11 +23,15 @@ def generate_launch_description():
 
     # Position and orientation
     # [X, Y, Z]
-    position = [-0.2, 0.0, 0.2]
+    position = [1.5, 0.0, 0.5]      # Uncomment this line when using competition world
+    #position = [-0.2, 0.0, 0.2]    # Uncomment this line when using proportional controller in empty world
     # [Roll, Pitch, Yaw]
-    orientation = [0.0, 0.0, 1.57]
+    orientation = [0.0, 0.0, 0.0]   # Uncomment this line when using competition world
+    #orientation = [0.0, 0.0, 1.57S]  # Uncomment this line when using proportional controller in empty world
     # Base Name or robot
     robot_base_name = "robot_name"
+
+
     ####### DATA INPUT END ##########
 
     # Path to robot model XACRO File

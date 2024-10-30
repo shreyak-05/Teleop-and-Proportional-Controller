@@ -894,16 +894,16 @@
   </link>
   <joint
     name="lidar_joint"
-    type="continuous">
+    type="fixed">
     <origin
       xyz="0.219541699413715 -0.521188368096002 0.439623181973066"
-      rpy="1.5707963267949 0 0" />
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
       link="lidar_link" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 0 1" />
   </joint>
 
 
@@ -1034,7 +1034,7 @@
     <ray>
       <scan>
         <horizontal>
-          <samples>30</samples>
+          <samples>360</samples>
           <resolution>1.00000</resolution>
           <min_angle>0.000000</min_angle>
           <max_angle>6.280000</max_angle>

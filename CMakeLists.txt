@@ -41,6 +41,7 @@ install(
   scripts/proportional_controller.py
   scripts/position_logger.py
   scripts/p_controller.py
+  scripts/laser_scan_relay.py
   DESTINATION lib/${PROJECT_NAME}
   )
 
