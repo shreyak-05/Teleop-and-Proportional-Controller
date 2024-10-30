@@ -40,6 +40,7 @@ install(
   scripts/teleop.py
   scripts/proportional_controller.py
   scripts/position_logger.py
+  scripts/p_controller.py
   DESTINATION lib/${PROJECT_NAME}
   )
 
