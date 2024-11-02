@@ -19,8 +19,8 @@ Ensure the following are installed and configured:
 - **Gazebo** simulator
 - **Workspace Setup**: The package should be in a ROS 2 workspace, built, and sourced.
 - **Package Installation**: Install the necessary ROS 2 packages
-```bash 
-sudo apt install ros-galactic-ros2-control ros-galactic-ros2-controllers ros-galactic-gazebo-ros2-control sudo apt-get install ros-galactic-controller-manager
+  ```bash 
+  sudo apt install ros-galactic-ros2-control ros-galactic-ros2-controllers ros-galactic-gazebo-ros2-control sudo apt-get install ros-galactic-controller-manager
 
 ## Installation
 
