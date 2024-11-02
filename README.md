@@ -73,4 +73,4 @@ To visualize the robot model and Lidar data, follow these steps:
 
   - Add the "RobotModel" display type.Set the topic to /robot_description to visualize the robot model.
   - In RViz, add the "LaserScan" display type. Set the topic to /scan_relay to visualize the incoming LiDAR points.
-  - Add the "TF" display type. Ensure that the base link of the robot is displayed by setting it up with the relevant frame (e.g., base_link).
+  - Add the "TF" display type. Ensure that the base link of the robot is displayed by setting it up with the base_link.
