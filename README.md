@@ -18,9 +18,6 @@ Ensure the following are installed and configured:
 - **Ubuntu 20.04** with **ROS 2 Galactic**
 - **Gazebo** simulator
 - **Workspace Setup**: The package should be in a ROS 2 workspace, built, and sourced.
-- **Package Installation**: Install the necessary ROS 2 packages
-  ```bash 
-  sudo apt install ros-galactic-ros2-control ros-galactic-ros2-controllers ros-galactic-gazebo-ros2-control sudo apt-get install ros-galactic-controller-manager
 
 ## Installation
 
@@ -32,11 +29,20 @@ To build the package from GitHub, follow these steps:
    cd ~/ros2_ws/src
    git clone https://github.com/GraysonGilbert/project_1_group_2.git
 
-2. **Build and source the Workspace**: Compile the package by building the workspace and source the setup file to overlay this workspace onto your environment:
+2. **Install ROS2 Packages**: To ensure proper functionality of the proportional controller and odometry, install the necessary ROS 2 packages by executing the following commands:
+
+- Run the following command to install ROS2 Control Packages 
+   ```bash 
+   sudo apt install ros-galactic-ros2-control ros-galactic-ros2-controllers ros-galactic-gazebo-ros2-control sudo apt-get install ros-galactic-controller-manager
+- Run the following command to download the odometry package.
+   ```bash
+   svn export https://github.com/shantanuparabumd/ENPM-662-Introduction-to-Robot-Modelling.git/trunk/templates/plugin/odometry
+
+3. **Build and source the Workspace**: Compile the package by building the workspace and source the setup file to overlay this workspace onto your environment:
 
    ```bash
+   cd ~/ros2_ws
    colcon build
-   source install/setup.bash
 
 ## Teleoperation
 
