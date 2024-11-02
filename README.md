@@ -8,7 +8,7 @@ This README provides instructions for executing the package, along with commands
 - [Installation](#Installation)
 - [Teleoperation](#teleoperation)
 - [Proportional Controller](#proportional-controller)
-- [Visualizing LiDAR Data and Robot Model in RViz](#Visualizing LiDAR Data and Robot Model in RViz)
+- [Visualizing LiDAR Data and Robot Model in RViz](#Visualizing-LiDAR-Data-and-Robot-Model-in-RViz)
 
 
 ## Prerequisites
