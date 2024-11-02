@@ -50,6 +50,8 @@ To launch the robot in competition world, use:
 
     ros2 launch project_1_group_2 competition.launch.py
 
+Verify if the robot is spawned in the right position in the spawn_robot_ros2.launch.py file.
+
 In a separate terminal, start the teleoperation script to control the robot:
 
     ros2 run project_1_group_2 teleop.py
