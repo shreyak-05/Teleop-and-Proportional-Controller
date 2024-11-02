@@ -26,7 +26,7 @@ To build the package from GitHub, follow these steps:
 
    ```bash
    cd ~/ros2_ws/src
-   git clone [<repository_url>](https://github.com/GraysonGilbert/project_1_group_2.git)
+   git clone https://github.com/GraysonGilbert/project_1_group_2.git
 
 2. **Build the Workspace**: Compile the package by building the workspace:
 
