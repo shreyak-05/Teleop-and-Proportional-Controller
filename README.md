@@ -54,7 +54,7 @@ Launch the robot in empty world and run the proportional controller:
 
 To launch the robot in empty worldm use: 
 
-   ros2 launch project_1_group_2 competition.launch.py
+    ros2 launch project_1_group_2 competition.launch.py
 
 In a separate terminal, run the proportional controller:
 
