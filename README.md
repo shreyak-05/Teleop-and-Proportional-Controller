@@ -53,4 +53,5 @@ To launch the robot in empty world, use:
 In a separate terminal, run the proportional controller:
 
     ros2 run project_1_group_2 proportional_controller.py
-
+    
+The robot will begin moving from (0,0) to (10,10) using the proportional control strategy.
