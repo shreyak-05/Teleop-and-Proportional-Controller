@@ -25,6 +25,7 @@ Ensure the following are installed and configured:
 
 To launch the robot in competition world, use:
 
+    ```bash
     ros2 launch project_1_group_2 competition.launch.py
 
 
@@ -35,11 +36,13 @@ Once the robot is launched in Gazebo, follow these steps for teleoperation:
 In a separate terminal, start the teleoperation script to control the robot:
 
 
+    ```bash
     ros2 run project_1_group_2 teleop.py
 
 # Proportional Controller
 
 Launch the ROS 2 environment and run the proportional controller:
 
+    ```bash
     ros2 run project_1_group_2 proportional_controller.py
 
