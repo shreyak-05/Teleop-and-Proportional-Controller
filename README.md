@@ -40,10 +40,6 @@ To launch the robot in competition world, use:
 
     ros2 launch project_1_group_2 competition.launch.py
 
-Once the robot is launched in Gazebo, follow these steps for teleoperation:
-
-**Run Teleoperation**
-
 In a separate terminal, start the teleoperation script to control the robot:
 
     ros2 run project_1_group_2 teleop.py
