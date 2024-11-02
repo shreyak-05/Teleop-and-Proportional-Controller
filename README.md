@@ -8,6 +8,7 @@ This README provides instructions for executing the package, along with commands
 - [Installation](#Installation)
 - [Teleoperation](#teleoperation)
 - [Proportional Controller](#proportional-controller)
+- [Visualizing LiDAR Data and Robot Model in RViz](#Visualizing LiDAR Data and Robot Model in RViz)
 
 
 ## Prerequisites
@@ -62,11 +63,11 @@ To visualize the robot model and Lidar data, follow these steps:
 
 1. **Launch RViz**: Open a new terminal and run the following command to start RViz with the appropriate configuration:
 
-    ros2 launch project_1_group_2 display.launch.py
+        ros2 launch project_1_group_2 display.launch.py
 
 2. **Run the Laser Scan Node**: Open another terminal and execute the laser scan script to publish the LiDAR data:
 
-    ros2 run project_1_group_2 laser_scan.py
+        ros2 run project_1_group_2 laser_scan.py
 
 3. **Configure RViz**:
 
