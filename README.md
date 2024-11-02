@@ -36,7 +36,7 @@ Once the robot is launched in Gazebo, follow these steps for teleoperation:
 
 In a separate terminal, start the teleoperation script to control the robot:
 
-    bash
+bash
 
     ros2 run project_1_group_2 teleop.py
 
