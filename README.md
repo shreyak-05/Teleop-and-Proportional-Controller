@@ -50,11 +50,9 @@ In a separate terminal, start the teleoperation script to control the robot:
 
 ## Proportional Controller
 
-Launch the robot in empty world and run the proportional controller:
+To launch the robot in empty world, use: 
 
-To launch the robot in empty worldm use: 
-
-    ros2 launch project_1_group_2 competition.launch.py
+    ros2 launch project_1_group_2 gazebo.launch.py
 
 In a separate terminal, run the proportional controller:
 
