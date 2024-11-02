@@ -18,6 +18,9 @@ Ensure the following are installed and configured:
 - **Ubuntu 20.04** with **ROS 2 Galactic**
 - **Gazebo** simulator
 - **Workspace Setup**: The package should be in a ROS 2 workspace, built, and sourced.
+- **Package Installation**: Install the necessary ROS 2 packages
+   sudo apt install ros-galactic-ros2-control ros-galactic-ros2-controllers ros-galactic-gazebo-ros2-control
+   sudo apt-get install ros-galactic-controller-manager
 
 ## Installation
 
