@@ -55,3 +55,24 @@ In a separate terminal, run the proportional controller:
     ros2 run project_1_group_2 proportional_controller.py
     
 The robot will begin moving from (0,0) to (10,10) using the proportional control strategy.
+
+## Visualizing LiDAR Data and Robot Model in RViz
+To visualize the robot model and Lidar data, follow these steps:
+
+Launch RViz: Open a new terminal and run the following command to start RViz with the appropriate configuration:
+
+    bash
+
+   ros2 launch project_1_group_2 display.launch.py
+
+Run the Laser Scan Node: Open another terminal and execute the laser scan script to publish the LiDAR data:
+
+   bash
+
+   ros2 run project_1_group_2 laser_scan.py
+
+Configure RViz:
+
+1. Add the "RobotModel" display type.Set the topic to /robot_description to visualize the robot model.
+2. In RViz, add the "LaserScan" display type. Set the topic to /scan_relay to visualize the incoming LiDAR points.
+3. Add the "TF" display type. Ensure that the base link of the robot is displayed by setting it up with the relevant frame (e.g., base_link).
