@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Teleop-and-Proportional-Controller
-=======
 ## PROJECT 1 - Teleop and Proportional Controller
 
 This README provides instructions for executing the package, along with commands for teleoperation and running a proportional controller. This package allows users to control a custom robot model in Gazebo using ROS 2 Galactic, either through manual teleoperation or an automated proportional controller.
@@ -88,4 +85,3 @@ To visualize the robot model and Lidar data, follow these steps:
   - Add the "RobotModel" display type. Set the topic to /robot_description and fixed frame to base_link to visualize the robot model.
   - In RViz, add the "LaserScan" display type. Set the topic to /scan_relay to visualize the incoming LiDAR points.
   
->>>>>>> collaborator/main
